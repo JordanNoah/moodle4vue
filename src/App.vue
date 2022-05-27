@@ -177,6 +177,9 @@
           </v-col>
         </v-row>
       </v-container>
+      <v-snackbar timeout="2000" v-model="snackbar" color="primary">
+        Welcome back JhonDoe 👋
+      </v-snackbar>
     </v-main>
 
   </v-app>
@@ -189,6 +192,7 @@
 
     data: () => ({
       drawer: true,
+      snackbar:false,
       items: [{
           title: 'Dashboard',
           icon: 'mdi-view-dashboard'
@@ -218,6 +222,11 @@
       date1: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
       date2: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
     }),
+    mounted:function(){
+      setTimeout(() => {
+        this.snackbar = true
+      }, 1000);
+    },
     methods: {
       functionEvents (date) {
         const [,, day] = date.split('-')
